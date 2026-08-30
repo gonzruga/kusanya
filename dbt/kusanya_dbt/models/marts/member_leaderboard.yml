@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: member_leaderboard
+    description: Leaderboard of members by contributions
+
+    columns:
+      - name: id
+        description: Member ID
+        meta:
+          dimension:
+            type: string
+
+      - name: first_name
+        description: First name
+        meta:
+          dimension:
+            type: string
+
+      - name: last_name
+        description: Last name
+        meta:
+          dimension:
+            type: string
+
+      - name: mobile_number
+        description: Mobile number
+        meta:
+          dimension:
+            type: string
+
+      - name: total_paid
+        description: Total amount paid
+        meta:
+          metrics:
+            total_paid:
+              type: sum
+              label: Total Paid
+              format: number
+
+      - name: last_payment
+        meta:
+          dimension:
+            type: timestamp

@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  lightdash:
+    image: lightdash/lightdash:latest
+    container_name: kusanya-lightdash
+    ports:
+      - "8080:8080"
+    environment:
+      LIGHTDASH_SECRET: kusanya-secret
+      PGHOST: kusanya-postgres
+      PGPORT: 5432
+      PGUSER: kusanya
+      PGPASSWORD: your_password
+      PGDATABASE: kusanya

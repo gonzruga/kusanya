@@ -1,0 +1,260 @@
+version: 2
+
+sources:
+
+  - name: public
+    schema: public
+
+    tables:
+
+      - name: User
+      - name: Group
+      - name: Member
+      - name: Campaign
+      - name: Contribution
+
+
+models:
+
+  - name: stg_users
+    description: Cleaned users
+
+    columns:
+
+      - name: id
+        meta:
+          dimension:
+            type: string
+
+      - name: first_name
+        meta:
+          dimension:
+            type: string
+
+      - name: last_name
+        meta:
+          dimension:
+            type: string
+
+      - name: mobile_number
+        meta:
+          dimension:
+            type: string
+
+      - name: email
+        meta:
+          dimension:
+            type: string
+
+      - name: role
+        meta:
+          dimension:
+            type: string
+
+      - name: status
+        meta:
+          dimension:
+            type: string
+
+      - name: created_at
+        meta:
+          dimension:
+            type: timestamp
+
+
+
+  - name: stg_groups
+    description: Cleaned groups
+
+    columns:
+
+      - name: id
+        meta:
+          dimension:
+            type: string
+
+      - name: name
+        meta:
+          dimension:
+            type: string
+
+      - name: description
+        meta:
+          dimension:
+            type: string
+
+      - name: currency
+        meta:
+          dimension:
+            type: string
+
+      - name: status
+        meta:
+          dimension:
+            type: string
+
+      - name: created_at
+        meta:
+          dimension:
+            type: timestamp
+
+
+
+  - name: stg_members
+    description: Cleaned members
+
+    columns:
+
+      - name: id
+        meta:
+          dimension:
+            type: string
+
+      - name: group_id
+        meta:
+          dimension:
+            type: string
+
+      - name: first_name
+        meta:
+          dimension:
+            type: string
+
+      - name: last_name
+        meta:
+          dimension:
+            type: string
+
+      - name: mobile_number
+        meta:
+          dimension:
+            type: string
+
+      - name: default_contribution
+        meta:
+          dimension:
+            type: number
+
+      - name: role
+        meta:
+          dimension:
+            type: string
+
+      - name: status
+        meta:
+          dimension:
+            type: string
+
+      - name: created_at
+        meta:
+          dimension:
+            type: timestamp
+
+
+
+  - name: stg_campaigns
+    description: Cleaned campaigns
+
+    columns:
+
+      - name: id
+        meta:
+          dimension:
+            type: string
+
+      - name: group_id
+        meta:
+          dimension:
+            type: string
+
+      - name: title
+        meta:
+          dimension:
+            type: string
+
+      - name: description
+        meta:
+          dimension:
+            type: string
+
+      - name: category
+        meta:
+          dimension:
+            type: string
+
+      - name: goal
+        meta:
+          dimension:
+            type: number
+
+      - name: status
+        meta:
+          dimension:
+            type: string
+
+      - name: start_date
+        meta:
+          dimension:
+            type: timestamp
+
+      - name: end_date
+        meta:
+          dimension:
+            type: timestamp
+
+      - name: created_at
+        meta:
+          dimension:
+            type: timestamp
+
+
+
+  - name: stg_contributions
+    description: Cleaned contributions
+
+    columns:
+
+      - name: id
+        meta:
+          dimension:
+            type: string
+
+      - name: campaign_id
+        meta:
+          dimension:
+            type: string
+
+      - name: member_id
+        meta:
+          dimension:
+            type: string
+
+      - name: amount
+        meta:
+          dimension:
+            type: number
+
+      - name: mobile_number
+        meta:
+          dimension:
+            type: string
+
+      - name: status
+        meta:
+          dimension:
+            type: string
+
+      - name: transaction_reference
+        meta:
+          dimension:
+            type: string
+
+      - name: provider
+        meta:
+          dimension:
+            type: string
+
+      - name: created_at
+        meta:
+          dimension:
+            type: timestamp

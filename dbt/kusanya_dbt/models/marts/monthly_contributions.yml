@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: monthly_contributions
+
+    columns:
+
+      - name: month
+        meta:
+          dimension:
+            type: date
+
+      - name: contributions
+        meta:
+          metrics:
+            contributions:
+              type: sum
+
+      - name: unique_members
+        meta:
+          metrics:
+            unique_members:
+              type: sum
+
+      - name: total_amount
+        meta:
+          metrics:
+            total_amount:
+              type: sum

@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: group_leaderboard
+
+    columns:
+
+      - name: id
+        meta:
+          dimension:
+            type: string
+
+      - name: name
+        meta:
+          dimension:
+            type: string
+
+      - name: campaigns
+        meta:
+          metrics:
+            campaigns:
+              type: sum
+
+      - name: contributions
+        meta:
+          metrics:
+            contributions:
+              type: sum
+
+      - name: total_amount
+        meta:
+          metrics:
+            total_amount:
+              type: sum

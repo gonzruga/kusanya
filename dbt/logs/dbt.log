@@ -1,0 +1,132 @@
+[0m20:17:50.340254 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FA4663D7F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FA43F84E10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FA48EC3C50>]}
+
+
+============================== 20:17:50.357293 | 5ba32ce4-1db1-4e22-b9d6-9efe47f60dd4 ==============================
+[0m20:17:50.357293 [info ] [MainThread]: Running with dbt=1.12.0
+[0m20:17:50.358006 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'maximum_seed_size_mib': '1', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\Gonza\\.dbt', 'invocation_command': 'dbt init kusanya_dbt', 'hints_enabled': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'indirect_selection': 'eager', 'log_path': 'logs'}
+[0m20:17:50.383481 [info ] [MainThread]: Creating dbt configuration folder at C:\Users\Gonza\.dbt
+[0m20:17:50.386137 [debug] [MainThread]: Starter project path: C:\Users\Gonza\AppData\Roaming\Python\Python314\site-packages\dbt\include\starter_project
+[0m20:17:50.411709 [info ] [MainThread]: Setting up your profile.
+[0m20:21:29.420821 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+
+[0m20:21:29.430252 [error] [MainThread]: Traceback (most recent call last):
+  File "C:\Users\Gonza\AppData\Roaming\Python\Python314\site-packages\dbt\cli\requires.py", line 190, in wrapper
+    result, success = func(*args, **kwargs)
+                      ~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gonza\AppData\Roaming\Python\Python314\site-packages\dbt\cli\requires.py", line 136, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Gonza\AppData\Roaming\Python\Python314\site-packages\dbt\cli\main.py", line 503, in init
+    results = task.run()
+  File "C:\Users\Gonza\AppData\Roaming\Python\Python314\site-packages\dbt\task\init.py", line 360, in run
+    self.setup_profile(profile_name)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Gonza\AppData\Roaming\Python\Python314\site-packages\dbt\task\init.py", line 264, in setup_profile
+    self.create_profile_from_target(adapter, profile_name=profile_name)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gonza\AppData\Roaming\Python\Python314\site-packages\dbt\task\init.py", line 181, in create_profile_from_target
+    self.create_profile_from_profile_template(profile_template, profile_name)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gonza\AppData\Roaming\Python\Python314\site-packages\dbt\task\init.py", line 165, in create_profile_from_profile_template
+    target = self.generate_target_from_input(prompts, initial_target)
+  File "C:\Users\Gonza\AppData\Roaming\Python\Python314\site-packages\dbt\task\init.py", line 131, in generate_target_from_input
+    target[key] = click.prompt(
+                  ~~~~~~~~~~~~^
+        text, default=default, hide_input=hide_input, type=type
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Gonza\AppData\Roaming\Python\Python314\site-packages\click\termui.py", line 218, in prompt
+    value = prompt_func(prompt)
+  File "C:\Users\Gonza\AppData\Roaming\Python\Python314\site-packages\click\termui.py", line 201, in prompt_func
+    raise Abort() from None
+click.exceptions.Abort
+
+[0m20:21:29.432093 [debug] [MainThread]: Command `dbt init` failed at 20:21:29.431932 after 219.27 seconds
+[0m20:21:29.432487 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FA48FAFA80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FA48F732F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FA49090160>]}
+[0m20:21:29.433001 [debug] [MainThread]: Flushing usage events
+[0m20:21:30.270768 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m20:21:57.844474 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001BCA66897F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001BCA3FD4E10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001BCA8F13C50>]}
+
+
+============================== 20:21:57.854548 | 594de410-22c8-49d0-bbab-03865bfee5fd ==============================
+[0m20:21:57.854548 [info ] [MainThread]: Running with dbt=1.12.0
+[0m20:21:57.855549 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'maximum_seed_size_mib': '1', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'static_parser': 'True', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\Gonza\\.dbt', 'invocation_command': 'dbt init kusanya_dbt', 'hints_enabled': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'indirect_selection': 'eager', 'log_path': 'logs'}
+[0m20:21:57.874735 [info ] [MainThread]: A project called kusanya_dbt already exists here.
+[0m20:21:57.876824 [debug] [MainThread]: Command `dbt init` succeeded at 20:21:57.876644 after 0.19 seconds
+[0m20:21:57.877717 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001BCA8D77BB0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001BCA90044D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001BCA8EEAE00>]}
+[0m20:21:57.878345 [debug] [MainThread]: Flushing usage events
+[0m20:21:58.679518 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m13:22:10.102864 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000182D0ADD7F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000182CE414E10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000182D32F79D0>]}
+
+
+============================== 13:22:10.115864 | 84c98eff-6369-4f34-9f60-059bb9a5f92e ==============================
+[0m13:22:10.115864 [info ] [MainThread]: Running with dbt=1.12.0
+[0m13:22:10.117023 [debug] [MainThread]: running dbt with arguments {'maximum_seed_size_mib': '1', 'no_print': 'None', 'version_check': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'static_parser': 'True', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\Gonza\\.dbt', 'use_colors': 'True', 'hints_enabled': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'invocation_command': 'dbt run', 'log_path': 'logs'}
+[0m13:22:10.117858 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path C:\Users\Gonza\OneDrive\Documents\GDrive\Kusanya\Dev\kusanya\dbt\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m13:22:10.119107 [debug] [MainThread]: Command `dbt run` failed at 13:22:10.118989 after 0.17 seconds
+[0m13:22:10.119429 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000182D33755B0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000182D3373AD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000182D3498270>]}
+[0m13:22:10.119752 [debug] [MainThread]: Flushing usage events
+[0m13:22:10.875931 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m18:37:13.394016 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025B6EF217F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025B6C828F50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025B717A3C50>]}
+
+
+============================== 18:37:13.412582 | 03a73578-f601-4d30-b214-9916599c105f ==============================
+[0m18:37:13.412582 [info ] [MainThread]: Running with dbt=1.12.0
+[0m18:37:13.413860 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'maximum_seed_size_mib': '1', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\Gonza\\.dbt', 'invocation_command': 'dbt debug', 'hints_enabled': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'use_colors': 'True', 'log_path': 'logs'}
+[0m18:37:13.470705 [info ] [MainThread]: dbt version: 1.12.0
+[0m18:37:13.471791 [info ] [MainThread]: python version: 3.14.3
+[0m18:37:13.472722 [info ] [MainThread]: python path: C:\Python314\python.exe
+[0m18:37:13.473710 [info ] [MainThread]: os info: Windows-11-10.0.26200-SP0
+[0m18:37:13.794145 [info ] [MainThread]: Using profiles dir at C:\Users\Gonza\.dbt
+[0m18:37:13.795492 [info ] [MainThread]: Using profiles.yml file at C:\Users\Gonza\.dbt\profiles.yml
+[0m18:37:13.796490 [info ] [MainThread]: Using dbt_project.yml file at C:\Users\Gonza\OneDrive\Documents\GDrive\Kusanya\Dev\kusanya\dbt\dbt_project.yml
+[0m18:37:13.798525 [info ] [MainThread]: adapter type: postgres
+[0m18:37:13.799538 [info ] [MainThread]: adapter version: 1.11.0
+[0m18:37:13.800551 [info ] [MainThread]: Configuration:
+[0m18:37:13.802567 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m18:37:13.804021 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m18:37:13.805023 [info ] [MainThread]: Required dependencies:
+[0m18:37:13.806130 [debug] [MainThread]: Executing "git --help"
+[0m18:37:13.891256 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   history    EXPERIMENTAL: Rewrite history\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Set `HEAD` or the index to a known state\n   switch     Switch branches\n   tag        Create, list, delete or verify tags\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m18:37:13.892557 [debug] [MainThread]: STDERR: "b''"
+[0m18:37:13.893223 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m18:37:13.893826 [info ] [MainThread]: Connection:
+[0m18:37:13.894465 [info ] [MainThread]:   host: localhost
+[0m18:37:13.894976 [info ] [MainThread]:   port: 5432
+[0m18:37:13.895453 [info ] [MainThread]:   user: postgres
+[0m18:37:13.895927 [info ] [MainThread]:   database: kusanya
+[0m18:37:13.896393 [info ] [MainThread]:   schema: public
+[0m18:37:13.896873 [info ] [MainThread]:   connect_timeout: 10
+[0m18:37:13.897373 [info ] [MainThread]:   role: None
+[0m18:37:13.898109 [info ] [MainThread]:   search_path: None
+[0m18:37:13.898739 [info ] [MainThread]:   keepalives_idle: 0
+[0m18:37:13.899542 [info ] [MainThread]:   sslmode: None
+[0m18:37:13.900427 [info ] [MainThread]:   sslcert: None
+[0m18:37:13.901458 [info ] [MainThread]:   sslkey: None
+[0m18:37:13.902363 [info ] [MainThread]:   sslrootcert: None
+[0m18:37:13.903029 [info ] [MainThread]:   application_name: dbt
+[0m18:37:13.903576 [info ] [MainThread]:   autocommit: False
+[0m18:37:13.904082 [info ] [MainThread]:   retries: 1
+[0m18:37:13.904964 [info ] [MainThread]: Registered adapter: postgres=1.11.0
+[0m18:37:14.627032 [debug] [MainThread]: Acquiring new postgres connection 'debug'
+[0m18:37:14.929000 [debug] [MainThread]: Using postgres connection "debug"
+[0m18:37:14.929648 [debug] [MainThread]: On debug: select 1 as id
+[0m18:37:14.930276 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m18:37:15.047095 [debug] [MainThread]: SQL status: SELECT 1 in 0.117 seconds
+[0m18:37:15.048569 [debug] [MainThread]: On debug: Close
+[0m18:37:15.049296 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m18:37:15.050124 [info ] [MainThread]: [31m1 check failed:[0m
+[0m18:37:15.051120 [info ] [MainThread]: Project loading failed for the following reason:
+ project path <C:\Users\Gonza\OneDrive\Documents\GDrive\Kusanya\Dev\kusanya\dbt\dbt_project.yml> not found
+
+[0m18:37:15.053106 [debug] [MainThread]: Command `dbt debug` failed at 18:37:15.052864 after 1.96 seconds
+[0m18:37:15.053678 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m18:37:15.054322 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025B7160BBB0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025B71852690>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025B7188AF10>]}
+[0m18:37:15.054976 [debug] [MainThread]: Flushing usage events
+[0m18:37:15.065245 [debug] [MainThread]: An error was encountered while trying to flush usage events

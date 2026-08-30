@@ -1,0 +1,245 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String     @id @default(cuid())
+  firstName    String
+  lastName     String
+  mobileNumber String     @unique
+  email        String     @unique
+  password     String
+  role         Role?      @default(USER)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  archivedAt   DateTime?
+  status       UserStatus @default(ACTIVE)
+  ownedGroups  Group[]    @relation("GroupOwner")
+
+  @@index([status])
+}
+
+model Group {
+  id          String      @id @default(cuid())
+  name        String
+  description String
+  ownerId     String
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  imageUrl    String?
+  archivedAt  DateTime?
+  currency    String      @default("TZS") @db.VarChar(3)
+  status      GroupStatus @default(ACTIVE)
+  campaigns   Campaign[]
+  owner       User        @relation("GroupOwner", fields: [ownerId], references: [id])
+  members     Member[]
+
+  @@index([ownerId])
+  @@index([status])
+}
+
+model Member {
+  id                  String         @id @default(cuid())
+  firstName           String?
+  lastName            String?
+  mobileNumber        String
+  email               String?
+  comment             String?
+  createdAt           DateTime       @default(now())
+  updatedAt           DateTime       @updatedAt
+  archivedAt          DateTime?
+  defaultContribution Decimal?       @db.Decimal(10, 2)
+  groupId             String
+  role                RoleInGroup    @default(MEMBER)
+  status              MemberStatus   @default(ACTIVE)
+  contributions       Contribution[]
+  group               Group          @relation(fields: [groupId], references: [id])
+
+  @@unique([groupId, mobileNumber])
+  @@index([groupId])
+  @@index([mobileNumber])
+  @@index([status])
+}
+
+model Campaign {
+  id            String             @id @default(cuid())
+  title         String
+  description   String
+  category      CampaignCategory   @default(Other)
+  goal          Decimal?           @db.Decimal(10, 2)
+  status        CampaignStatus     @default(DRAFT)
+  code          String?            @unique
+  pushUrl       String?
+  startDate     DateTime
+  endDate       DateTime
+  groupId       String
+  createdAt     DateTime           @default(now())
+  updatedAt     DateTime           @updatedAt
+  imageUrl      String?
+  archivedAt    DateTime?
+  visibilty     CampaignVisibility @default(PRIVATE)
+  currency      String?
+  group         Group              @relation(fields: [groupId], references: [id])
+  contributions Contribution[]
+
+  @@index([groupId])
+  @@index([status])
+}
+
+model Contribution {
+  id                   String             @id @default(cuid())
+  amount               Decimal            @db.Decimal(10, 2)
+  mobileNumber         String
+  status               ContributionStatus @default(SUCCESSFUL)
+  transactionReference String             
+  provider             PaymentProvider
+  memberId             String
+  campaignId           String
+  createdAt            DateTime           @default(now())
+  processedAt          DateTime?
+  updatedAt            DateTime           @updatedAt
+  currency             String             @default("TZS") @db.VarChar(3)
+  providerReference    String?
+  campaign             Campaign           @relation(fields: [campaignId], references: [id])
+  member               Member             @relation(fields: [memberId], references: [id])
+
+  @@index([memberId])
+  @@index([campaignId, status])
+  @@index([mobileNumber])
+  @@index([transactionReference])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model campaign_performance {
+  id                   String?
+  group_id             String?
+  title                String?
+  category             CampaignCategory?
+  goal                 Decimal?          @db.Decimal(10, 2)
+  status               CampaignStatus?
+  start_date           DateTime?
+  end_date             DateTime?
+  contribution_count   BigInt?
+  contributing_members BigInt?
+  total_collected      Decimal?          @db.Decimal
+  amount_remaining     Decimal?          @db.Decimal
+  percent_completed    Decimal?          @db.Decimal
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model group_leaderboard {
+  id                   String?
+  name                 String?
+  campaigns            BigInt?
+  contributions        BigInt?
+  total_amount         Decimal? @db.Decimal
+  average_contribution Decimal? @db.Decimal
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model member_leaderboard {
+  id              String?
+  first_name      String?
+  last_name       String?
+  mobile_number   String?
+  contributions   BigInt?
+  total_paid      Decimal?  @db.Decimal
+  average_payment Decimal?  @db.Decimal
+  last_payment    DateTime? @db.Timestamp(6)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model monthly_contributions {
+  month          DateTime? @db.Timestamp(6)
+  contributions  BigInt?
+  unique_members BigInt?
+  total_amount   Decimal?  @db.Decimal
+  average_amount Decimal?  @db.Decimal
+
+  @@ignore
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum UserStatus {
+  ACTIVE
+  DISABLED
+  ARCHIVED
+}
+
+enum GroupStatus {
+  ACTIVE
+  INACTIVE
+  ARCHIVED
+}
+
+enum RoleInGroup {
+  ADMIN
+  MEMBER
+}
+
+enum MemberStatus {
+  ACTIVE
+  INACTIVE
+  BANNED
+  ARCHIVED
+}
+
+enum CampaignStatus {
+  DRAFT
+  ACTIVE
+  PAUSED
+  CLOSED
+  ARCHIVED
+}
+
+enum CampaignCategory {
+  Funeral
+  Wedding
+  Catastrophe
+  Medical
+  Education
+  Charity
+  Entertainment
+  Tourism
+  Religious
+  Community
+  Business
+  Other
+
+}
+
+enum CampaignVisibility {
+  PUBLIC
+  PRIVATE
+}
+
+enum ContributionStatus {
+  SUCCESSFUL
+  PENDING
+  FAILED
+  REVERSED
+  ARCHIVED
+}
+
+enum PaymentProvider {
+  MPESA
+  TIGOPESA
+  AIRTELMONEY
+  HALOPESA
+  MIXX
+}

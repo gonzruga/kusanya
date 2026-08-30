@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: group_summary
+    description: Summary of fundraising performance by KUSANYA group.
+
+    columns:
+
+      - name: group_id
+        description: Unique group identifier.
+        meta:
+          dimension:
+            type: string
+
+      - name: group_name
+        description: Name of the contribution group.
+        meta:
+          dimension:
+            type: string
+
+      - name: members
+        description: Number of members in the group.
+        meta:
+          metrics:
+            count:
+              type: number
+
+      - name: campaigns
+        description: Number of campaigns created by the group.
+        meta:
+          metrics:
+            count:
+              type: number
+
+      - name: total_contributions
+        description: Total amount contributed by the group.
+        meta:
+          metrics:
+            sum:
+              type: number

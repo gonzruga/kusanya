@@ -1,0 +1,72 @@
+version: 2
+
+models:
+
+  - name: member_contribution_analysis
+    description: Member level contribution behaviour analysis.
+
+    columns:
+
+      - name: member_id
+        description: Member identifier.
+        meta:
+          dimension:
+            type: string
+
+      - name: member_name
+        description: Full member name.
+        meta:
+          dimension:
+            type: string
+
+      - name: mobile_number
+        description: Member phone number.
+        meta:
+          dimension:
+            type: string
+
+      - name: group_id
+        description: Group identifier.
+        meta:
+          dimension:
+            type: string
+
+      - name: group_name
+        description: Group name.
+        meta:
+          dimension:
+            type: string
+
+      - name: default_contribution
+        description: Member expected contribution.
+        meta:
+          metrics:
+            average:
+              type: number
+
+      - name: contributions_count
+        description: Number of contributions made.
+        meta:
+          metrics:
+            sum:
+              type: number
+
+      - name: total_contributed
+        description: Total amount contributed.
+        meta:
+          metrics:
+            sum:
+              type: number
+
+      - name: average_contribution
+        description: Average contribution amount.
+        meta:
+          metrics:
+            average:
+              type: number
+
+      - name: last_contribution_date
+        description: Date of most recent contribution.
+        meta:
+          dimension:
+            type: timestamp

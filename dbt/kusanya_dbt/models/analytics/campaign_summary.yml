@@ -1,0 +1,49 @@
+# tells Lightdash which fields should be available as metrics.
+
+version: 2
+
+models:
+
+  - name: campaign_summary
+    description: Contribution performance summary for each campaign.
+
+    columns:
+
+      - name: campaign_id
+        description: Unique campaign identifier.
+        meta:
+          dimension:
+            type: string
+
+      - name: title
+        description: Campaign title.
+        meta:
+          dimension:
+            type: string
+
+      - name: category
+        description: Campaign category.
+        meta:
+          dimension:
+            type: string
+
+      - name: goal
+        description: Campaign fundraising target.
+        meta:
+          metrics:
+            sum:
+              type: number
+
+      - name: contribution_count
+        description: Number of contributions received.
+        meta:
+          metrics:
+            sum:
+              type: number
+
+      - name: total_collected
+        description: Total amount collected.
+        meta:
+          metrics:
+            sum:
+              type: number

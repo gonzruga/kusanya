@@ -1,0 +1,74 @@
+version: 2
+
+models:
+
+  - name: contribution_summary
+    description: Aggregated contribution statistics per campaign.
+
+    columns:
+
+      - name: campaign_id
+        description: Campaign identifier.
+        meta:
+          dimension:
+            type: string
+
+      - name: campaign_name
+        description: Campaign title.
+        meta:
+          dimension:
+            type: string
+
+      - name: group_id
+        description: Group identifier.
+        meta:
+          dimension:
+            type: string
+
+      - name: name
+        description: Group name.
+        meta:
+          dimension:
+            type: string
+
+      - name: number_of_contributions
+        description: Total number of payments.
+        meta:
+          metrics:
+            sum:
+              type: number
+
+      - name: total_amount
+        description: Total contribution amount.
+        meta:
+          metrics:
+            sum:
+              type: number
+
+      - name: average_contribution
+        description: Average contribution value.
+        meta:
+          metrics:
+            average:
+              type: number
+
+      - name: minimum_contribution
+        description: Smallest contribution.
+        meta:
+          metrics:
+            min:
+              type: number
+
+      - name: maximum_contribution
+        description: Largest contribution.
+        meta:
+          metrics:
+            max:
+              type: number
+
+      - name: unique_contributors
+        description: Number of unique contributors.
+        meta:
+          metrics:
+            count:
+              type: number

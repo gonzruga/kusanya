@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: campaign_performance
+    description: Campaign performance metrics
+
+    columns:
+
+      - name: id
+        description: Campaign ID
+        meta:
+          dimension:
+            type: string
+
+      - name: title
+        meta:
+          dimension:
+            type: string
+
+      - name: category
+        meta:
+          dimension:
+            type: string
+
+      - name: status
+        meta:
+          dimension:
+            type: string
+
+      - name: goal
+        meta:
+          metrics:
+            total_goal:
+              type: sum
+
+      - name: total_collected
+        meta:
+          metrics:
+            total_collected:
+              type: sum
+
+      - name: percent_completed
+        meta:
+          metrics:
+            average_completion:
+              type: average
