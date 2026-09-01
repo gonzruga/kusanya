@@ -45,82 +45,84 @@ export default function RegisterPage() {
       router.push("/groups/create");
 
 
- } catch (error: any) {
-    console.log("Registration error:", error);
-    console.log("Status:", error.response?.status);
-    console.log("Backend response:", error.response?.data);
+    } catch (error: any) {
+      console.log("Registration error:", error);
+      console.log("Status:", error.response?.status);
+      console.log("Backend response:", error.response?.data);
 
-    alert(
-      JSON.stringify(
-        error.response?.data || "Registration failed",
-        null,
-        2
-      )
-    );
+      alert(
+        JSON.stringify(
 
+          error.response?.data || "Registration failed",
+          null,
+          2
+        )
+      );
+
+    }
   }
 
+  return (
 
-return (
+    <div className="max-w-md mx-auto mt-10">
 
-<div className="max-w-md mx-auto mt-10">
-
-<h1 className="text-2xl font-bold mb-5">
-Create User
-</h1>
-
-
-<input
-className="border p-2 w-full mb-3"
-name="firstName"
-placeholder="First name"
-onChange={handleChange}
-/>
+    <h1 className="text-2xl font-bold mb-5">
+    Create User
+    </h1>
 
 
-<input
-className="border p-2 w-full mb-3"
-name="lastName"
-placeholder="Last name"
-onChange={handleChange}
-/>
+    <input
+    className="border p-2 w-full mb-3"
+    name="firstName"
+    placeholder="First name"
+    onChange={handleChange}
+    />
 
 
-<input
-className="border p-2 w-full mb-3"
-name="mobileNumber"
-placeholder="Mobile Number"
-onChange={handleChange}
-/>
+    <input
+    className="border p-2 w-full mb-3"
+    name="lastName"
+    placeholder="Last name"
+    onChange={handleChange}
+    />
 
 
-<input
-className="border p-2 w-full mb-3"
-name="email"
-placeholder="Email"
-onChange={handleChange}
-/>
+    <input
+    className="border p-2 w-full mb-3"
+    name="mobileNumber"
+    placeholder="Mobile Number"
+    onChange={handleChange}
+    />
 
 
-<input
-className="border p-2 w-full mb-3"
-name="password"
-type="password"
-placeholder="Password"
-onChange={handleChange}
-/>
+    <input
+    className="border p-2 w-full mb-3"
+    name="email"
+    placeholder="Email"
+    onChange={handleChange}
+    />
 
 
-<button
-onClick={submit}
-className="bg-blue-600 text-white px-4 py-2 rounded"
->
-Register
-</button>
+    <input
+    className="border p-2 w-full mb-3"
+    name="password"
+    type="password"
+    placeholder="Password"
+    onChange={handleChange}
+    />
 
 
-</div>
+    <button
+    onClick={submit}
+    className="bg-blue-600 text-white px-4 py-2 rounded"
+    >
+    Register
+    </button>
 
-);
+
+    </div>
+
+  );
 
 }
+
