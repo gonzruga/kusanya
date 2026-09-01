@@ -12,7 +12,7 @@ export default function RegisterPage() {
   const [form, setForm] = useState({
     firstName:"",
     lastName:"",
-    phone:"",
+    mobileNumber:"",
     email:"",
     password:""
   });
@@ -45,10 +45,15 @@ export default function RegisterPage() {
       router.push("/groups/create");
 
 
-    } catch(error){
-
+ } catch (error: any) {
       console.log(error);
-      alert("Registration failed");
+
+      console.log("Response:", error.response?.data);
+
+      alert(
+        error.response?.data?.message ||
+        "Registration failed"
+      );
 
     }
 
@@ -82,8 +87,8 @@ onChange={handleChange}
 
 <input
 className="border p-2 w-full mb-3"
-name="phone"
-placeholder="Phone"
+name="mobileNumber"
+placeholder="Mobile Number"
 onChange={handleChange}
 />
 
