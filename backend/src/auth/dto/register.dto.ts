@@ -25,10 +25,10 @@ export class RegisterDto {
 
   @IsString()
   @IsNotEmpty()
-  @Matches(/^\+?[1-9]\d{1,14}$/, {
+  @Matches(/^\+[1-9]\d{1,14}$/, {
     message: 'Invalid mobile number format',
   })
-  mobileNumber!: string;
+  mobileNumber: string;
 
   @IsEmail()
   @IsNotEmpty()

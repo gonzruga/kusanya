@@ -46,16 +46,17 @@ export default function RegisterPage() {
 
 
  } catch (error: any) {
-      console.log(error);
+    console.log("Registration error:", error);
+    console.log("Status:", error.response?.status);
+    console.log("Backend response:", error.response?.data);
 
-      console.log("Response:", error.response?.data);
-
-      alert(
-        error.response?.data?.message ||
-        "Registration failed"
-      );
-
-    }
+    alert(
+      JSON.stringify(
+        error.response?.data || "Registration failed",
+        null,
+        2
+      )
+    );
 
   }
 
