@@ -18,6 +18,7 @@ name:"",
 description:"",
 ownerId:"USER_ID_HERE"
 
+
 });
 
 
@@ -54,9 +55,17 @@ router.push(
 
 }catch(error){
 
-console.log(error);
+  console.log("CREATE GROUP ERROR:", error);
+  console.log("STATUS:", error.response?.status);
+  console.log("BACKEND RESPONSE:", error.response?.data);
 
-alert("Failed");
+  alert(
+    JSON.stringify(
+      error.response?.data || "Failed",
+      null,
+      2
+    )
+  );
 
 }
 
