@@ -43,6 +43,9 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 
+# Lightdash
+http://localhost:8080/
+
 ```bash
 ## PRISMA DATABASE
 

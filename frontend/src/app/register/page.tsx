@@ -17,6 +17,7 @@ export default function RegisterPage() {
     password:""
   });
 
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (
     e:React.ChangeEvent<HTMLInputElement>
@@ -38,11 +39,15 @@ export default function RegisterPage() {
       );
 
 
-      console.log(response.data);
+    console.log("Registration response:", response.data); // Get the ID of the newly created user 
+    
+    const userId = response.data.id; 
 
-      alert("User created");
+    if (!userId) { throw new Error( "User was created, but the backend did not return a user ID." ); }
 
-      router.push("/groups/create");
+      alert("User creation attemp done");
+
+      router.push(`/users/${userId}`); // Redirect to the user details page after successful registration
 
 
     } catch (error: any) {
@@ -53,13 +58,13 @@ export default function RegisterPage() {
       alert(
         JSON.stringify(
 
-          error.response?.data || "Registration failed",
+          error.response?.data || "Registration failed -RegisterPage",
           null,
           2
         )
       );
 
-    }
+    } finally { setLoading(false); }
   }
 
   return (

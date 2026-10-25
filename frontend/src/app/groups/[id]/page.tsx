@@ -96,8 +96,16 @@ Total Campaigns:
   Add Member
 </Link>
 
-<br></br>
+<br></br><br></br>
 
+<Link
+  href={`/groups/${group.id}/members/upload`}
+  className="inline-block bg-blue-600 text-white px-4 py-2 rounded"
+>
+  Upload Members
+</Link>
+
+<br></br>
 <Link
   href={`/groups/${id}/campaigns/create`}
   className="inline-block bg-green-600 text-white px-4 py-2 mt-5 rounded"
@@ -105,12 +113,42 @@ Total Campaigns:
   Create Campaign
 </Link>
 
+<br></br>
+
+<Link
+  href={`/groups/${id}/contributions/bulk-upload`}
+  className="inline-block bg-blue-600 text-white px-4 py-2 mt-5 rounded"
+>
+  Upload Contributions
+</Link>
+
 <br></br><br></br>
 
 <h2 className="text-xl font-bold">
-
 Members
 </h2> 
+
+<br></br>
+
+<Link
+  href={`/groups/${id}/member-data`}
+  className="bg-indigo-600 text-white px-5 py-2 rounded ml-3"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  📋 Member & Contribution Data
+</Link>
+
+<br></br><br></br>
+
+  <Link
+    href={`/groups/${id}/analytics`}
+    className="bg-purple-600 text-white px-5 py-2 rounded"
+    target="_blank"
+      rel="noopener noreferrer"
+  >
+    📊 Analytics
+  </Link>
 
 <div className="mt-5 space-y-3">
 
@@ -282,16 +320,6 @@ Campaigns (open)
 
 {/* --------------------------------------------------- */}
 
-<br></br><br></br>
-
-  <Link
-    href={`/groups/${id}/analytics`}
-    className="bg-purple-600 text-white px-5 py-2 rounded"
-    target="_blank"
-      rel="noopener noreferrer"
-  >
-    📊 Analytics
-  </Link>
 
 </div>
 

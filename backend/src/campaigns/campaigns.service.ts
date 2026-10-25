@@ -13,7 +13,8 @@ import { CreateCampaignDto } from './dto/create-campaign.dto';
 import { UpdateCampaignDto } from './dto/update-campaign.dto';
 
 import {
- CampaignStatus
+ CampaignStatus,
+ Prisma
 } from '@prisma/client';
 
 
@@ -44,38 +45,80 @@ async create(groupId: string, dto: CreateCampaignDto){
    );
  }
 
+  const startDate = new Date(dto.startDate);
+  const endDate = new Date(dto.endDate);
 
- return this.prisma.campaign.create({
+  if (isNaN(startDate.getTime())) {
+    throw new BadRequestException(
+      "Invalid start date"
+    );
+  }
 
-   data:{
+  if (isNaN(endDate.getTime())) {
+    throw new BadRequestException(
+      "Invalid end date"
+    );
+  }
 
-    title:dto.title,
+  if (endDate < startDate) {
+    throw new BadRequestException(
+      "End date cannot be before start date"
+    );
+  }
 
-    description:dto.description,
+ try {
+  return this.prisma.campaign.create({
 
-    imageUrl:dto.imageUrl,
+      data:{
 
-    category:dto.category,
+        title:dto.title,
 
-    goal:dto.goal,
+        description:dto.description,
 
-    groupId,
+        imageUrl:dto.imageUrl,
 
-    startDate:dto.startDate,
-    endDate:dto.endDate,
+        category:dto.category,
 
-    status:CampaignStatus.DRAFT
+        goal:dto.goal,
 
-   },
+        groupId: groupId,
+        // groupId,
 
-   include:{
-    group:true
-   }
+        code: dto.code?.trim(),
 
- });
+        startDate: startDate,
+        endDate: endDate,
 
+        // startDate:dto.startDate,
+        // endDate:dto.endDate,
+
+        status:CampaignStatus.DRAFT
+
+      },
+
+      include:{
+        group:true
+      }
+
+  });
+
+  }  catch (error) {
+
+      // Campaign code already exists
+      if (
+        error instanceof Prisma.PrismaClientKnownRequestError &&
+        error.code === 'P2002'
+      ) {
+        throw new ConflictException(
+          'Campaign code is already in use.'
+        );
+      }
+
+      // Any other database error
+      throw error;
+  }
 }
-
+  
 
 
 // FIND ALL

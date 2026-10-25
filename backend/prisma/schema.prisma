@@ -82,7 +82,7 @@ model Campaign {
   updatedAt     DateTime           @updatedAt
   imageUrl      String?
   archivedAt    DateTime?
-  visibilty     CampaignVisibility @default(PRIVATE)
+  visibility    CampaignVisibility @default(PRIVATE)
   currency      String?
   group         Group              @relation(fields: [groupId], references: [id])
   contributions Contribution[]
@@ -112,6 +112,7 @@ model Contribution {
   @@index([campaignId, status])
   @@index([mobileNumber])
   @@index([transactionReference])
+  @@index([providerReference])
 }
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.

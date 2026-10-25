@@ -58,6 +58,8 @@ export default function GroupsPage() {
           <Link
             key={group.id}
             href={`/groups/${group.id}`}
+            target="_blank"
+            rel="noopener noreferrer"
             className="block border rounded p-4 hover:bg-gray-100"
           >
 

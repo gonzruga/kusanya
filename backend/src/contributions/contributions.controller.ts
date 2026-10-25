@@ -6,7 +6,11 @@
   Param,
   Patch,
   Post,
+  UploadedFile,
+  UseInterceptors,
 } from '@nestjs/common';
+
+import { FileInterceptor } from '@nestjs/platform-express';
 
 import { ContributionsService } from './contributions.service';
 
@@ -20,32 +24,29 @@ export class ContributionsController {
     private readonly contributionsService: ContributionsService,
   ) {}
 
-//   @Post('campaign/:campaignId')
-// createForCampaign(
-//   @Param('campaignId') campaignId: string,
-//   @Body() dto: CreateContributionDto,
-// ) {
-//   return this.contributionsService.createForCampaign(
-//     campaignId,
-//     dto,
-//   );
-// }
-
   @Post()
   create(@Body() dto: CreateContributionDto) {
     return this.contributionsService.create(dto);
+  }
+
+  @Post('bulk-upload')
+  @UseInterceptors(FileInterceptor('file'))
+  bulkUpload(
+    @UploadedFile() file: Express.Multer.File,
+    @Body('groupId') groupId: string,
+  ) {
+
+    return this.contributionsService.bulkUpload(
+      file,
+      groupId,
+    );
+
   }
 
   @Get()
   findAll() {
     return this.contributionsService.findAll();
   }
-
-  // @Get('campaign/:campaignId')
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   return this.contributionsService.findOne(id);
-  // }
 
   @Get('/campaign/:campaignId')
   findByCampaign(

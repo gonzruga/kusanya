@@ -130,3 +130,48 @@ Runtime Error
 [0m18:37:15.054322 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025B7160BBB0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025B71852690>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025B7188AF10>]}
 [0m18:37:15.054976 [debug] [MainThread]: Flushing usage events
 [0m18:37:15.065245 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m13:26:18.336535 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024EC1338830>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024EBEC28B90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024EC3B87890>]}
+
+
+============================== 13:26:18.347985 | 365a3898-55f5-46dd-a689-600eb051ccb6 ==============================
+[0m13:26:18.347985 [info ] [MainThread]: Running with dbt=1.12.0
+[0m13:26:18.349206 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'maximum_seed_size_mib': '1', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\Gonza\\.dbt', 'invocation_command': 'dbt run --select member_behavior_features member_behavior_segments', 'hints_enabled': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'indirect_selection': 'eager', 'log_path': 'logs'}
+[0m13:26:18.349740 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path D:\KusanyaPlatform\Dev\kusanya\dbt\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m13:26:18.351227 [debug] [MainThread]: Command `dbt run` failed at 13:26:18.350989 after 0.37 seconds
+[0m13:26:18.351945 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024EC3AF5350>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024EC3AFFD10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024EC3B8FAC0>]}
+[0m13:26:18.352572 [debug] [MainThread]: Flushing usage events
+[0m13:26:19.511471 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m13:26:28.591445 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000243BFDB8830>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000243BD6B4CD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000243C2603890>]}
+
+
+============================== 13:26:28.598968 | 952eccc8-da08-475c-8c55-0afa30580ba4 ==============================
+[0m13:26:28.598968 [info ] [MainThread]: Running with dbt=1.12.0
+[0m13:26:28.599824 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'maximum_seed_size_mib': '1', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': 'C:\\Users\\Gonza\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'invocation_command': 'dbt test', 'hints_enabled': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'use_colors': 'True', 'log_path': 'logs'}
+[0m13:26:28.602163 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path D:\KusanyaPlatform\Dev\kusanya\dbt\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m13:26:28.603886 [debug] [MainThread]: Command `dbt test` failed at 13:26:28.603689 after 0.22 seconds
+[0m13:26:28.604342 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000243C2579350>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000243C2577D10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000243C260FAC0>]}
+[0m13:26:28.604760 [debug] [MainThread]: Flushing usage events
+[0m13:26:29.820820 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m13:26:52.359195 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A90AEB8830>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A9087B4CD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A90D707890>]}
+
+
+============================== 13:26:52.366490 | 9afec8d4-7cb9-4650-9f63-ea74d961836e ==============================
+[0m13:26:52.366490 [info ] [MainThread]: Running with dbt=1.12.0
+[0m13:26:52.367516 [debug] [MainThread]: running dbt with arguments {'maximum_seed_size_mib': '1', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'static_parser': 'True', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': 'C:\\Users\\Gonza\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'use_colors': 'True', 'hints_enabled': 'True', 'invocation_command': 'dbt test', 'use_experimental_parser': 'False', 'indirect_selection': 'eager', 'log_path': 'logs'}
+[0m13:26:52.368042 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path D:\KusanyaPlatform\Dev\kusanya\dbt\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m13:26:52.369094 [debug] [MainThread]: Command `dbt test` failed at 13:26:52.368945 after 0.21 seconds
+[0m13:26:52.369580 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A90D679350>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A90D677D10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A90D70FAC0>]}
+[0m13:26:52.370051 [debug] [MainThread]: Flushing usage events
+[0m13:26:53.562705 [debug] [MainThread]: An error was encountered while trying to flush usage events

@@ -18,7 +18,13 @@ export class UserService  {
   }
 
   async create(data: Prisma.UserCreateInput) {
-    return this.prisma.user.create({ data });
+    const user = await this.prisma.user.create({ data });
+
+ // Do not return the password
+    const { password, ...safeUser } = user;
+
+    return safeUser;
+
   }
 
    async findAll() {
@@ -40,10 +46,14 @@ export class UserService  {
   }
 
   async update(id: string, data: Prisma.UserUpdateInput) {
-    return this.prisma.user.update({
+    const user = await this.prisma.user.update({
       where: { id },
       data,
     });
+
+    const { password, ...safeUser } = user;
+
+    return safeUser;
   }
 
   async remove(id: string) {

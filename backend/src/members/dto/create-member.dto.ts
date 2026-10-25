@@ -2,6 +2,7 @@ import {
   IsEmail,
   IsMobilePhone,
   IsNotEmpty,
+  IsNumber,
   IsOptional,
   IsString,
 } from 'class-validator';
@@ -26,6 +27,10 @@ export class CreateMemberDto {
   @IsOptional()
   @IsString()
   comment?: string;
+
+  @IsOptional()
+  @IsNumber()
+  defaultContribution?: number;
 
   @IsNotEmpty()
   @IsString()

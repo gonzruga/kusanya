@@ -6,12 +6,16 @@ import {
   Param,
   Patch,
   Post,
+  UploadedFile,
+  UseInterceptors,
 } from '@nestjs/common';
 
 import { MembersService } from './members.service';
 
 import { CreateMemberDto } from './dto/create-member.dto';
 import { UpdateMemberDto } from './dto/update-member.dto';
+
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller('members')
 export class MembersController {
@@ -23,6 +27,19 @@ export class MembersController {
   create(@Body() dto: CreateMemberDto) {
     return this.membersService.create(dto);
   }
+
+  @Post('bulk-upload')
+  @UseInterceptors(FileInterceptor('file'))
+  bulkUpload(
+    @UploadedFile() file: Express.Multer.File,
+    @Body('groupId') groupId: string,
+  ) {
+    return this.membersService.bulkUpload(
+      file,
+      groupId,
+    );
+  }
+
 
   @Get()
   findAll() {

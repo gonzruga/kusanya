@@ -29,6 +29,13 @@ export class CreateContributionDto {
   @IsString()
   providerReference?: string;
 
+//Removed when creating from campaing page.
+  @IsString()
+  @IsNotEmpty()
+  campaignId: string;
+
+}
+
 //   @IsOptional()
 //   @IsString()
 //   currency: Currency;
@@ -36,10 +43,3 @@ export class CreateContributionDto {
 //   @IsOptional()
 //   @IsEnum(ContributionStatus)
 //   status: ContributionStatus;
-
-//Removed when creating from campaing page.
-  @IsString()
-  @IsNotEmpty()
-  campaignId: string;
-
-}

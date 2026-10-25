@@ -1,0 +1,4 @@
+firstName,campaignId,mobileNumber,amount,provider,transactionReference,providerReference
+Adam Smith,cmsko...7vnl,+255712345678,50000,AIRTELMONEY,TXN001,AM001
+Madenge,cmsko...7vnl,+255713456789,25000,MPESA,TXN002,MP002
+Ruta,cmsko...7vnl,+255714567890,100000,AIRTELMONEY,TXN003,AM003

@@ -1,115 +1,140 @@
+
 "use client";
 
-
-import {useState} from "react";
+import { useState } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import { api } from "@/lib/api";
-import {useRouter} from "next/navigation";
 
+export default function CreateGroup() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
-export default function CreateGroup(){
+  // Get ownerId from:
+  // /groups/create?ownerId=USER_ID
+  const ownerId = searchParams.get("ownerId");
 
+  const [form, setForm] = useState({
+    name: "",
+    description: "",
+  });
 
-const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
+  function change(
+    e: React.ChangeEvent<HTMLInputElement>
+  ) {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  }
 
-const [form,setForm]=useState({
+  async function submit() {
+    if (!ownerId) {
+      setError("No owner was specified.");
+      return;
+    }
 
-name:"",
-description:"",
-ownerId:"USER_ID_HERE"
+    if (!form.name.trim()) {
+      setError("Please enter a group name.");
+      return;
+    }
 
+    try {
+      setLoading(true);
+      setError("");
 
-});
+      const res = await api.post("/groups", {
+        name: form.name,
+        description: form.description,
+        ownerId: ownerId,
+      });
 
+      console.log("GROUP CREATED:", res.data);
 
-function change(
-e:React.ChangeEvent<HTMLInputElement>
-){
+      alert("Group created successfully!");
 
-setForm({
-...form,
-[e.target.name]:e.target.value
-});
+      // Go directly to the newly created group
+      router.push(`/groups/${res.data.id}`);
 
-}
+    } catch (error: any) {
+      console.error("CREATE GROUP ERROR:", error);
+      console.error("STATUS:", error.response?.status);
+      console.error("BACKEND RESPONSE:", error.response?.data);
 
+      setError(
+        error.response?.data?.message ||
+          "Failed to create group."
+      );
+    } finally {
+      setLoading(false);
+    }
+  }
 
+  return (
+    <main className="max-w-md mx-auto mt-10 p-6">
 
-async function submit(){
+      <h1 className="text-2xl font-bold">
+        Create Group
+      </h1>
 
-try{
+      {!ownerId && (
+        <div className="mt-4 p-3 rounded bg-red-50 border border-red-300 text-red-700">
+          No user was selected as the group owner.
+        </div>
+      )}
 
-const res=await api.post(
-"/groups",
-form
-);
+{/* Displayes user ID of group owner. */}
+      {/* {ownerId && (
+        <div className="mt-4 p-3 rounded bg-gray-50 border">
+          <p className="text-sm text-gray-500">
+            Group Owner ID
+          </p>
 
+          <p className="font-medium break-all">
+            {ownerId}
+          </p>
+        </div>
+      )} */}
 
-alert("Group created");
+      <input
+        className="border p-2 w-full mt-5 rounded"
+        name="name"
+        placeholder="Group name"
+        value={form.name}
+        onChange={change}
+      />
 
+      <input
+        className="border p-2 w-full mt-3 rounded"
+        name="description"
+        placeholder="Description"
+        value={form.description}
+        onChange={change}
+      />
 
-router.push(
-`/groups/${res.data.id}`
-);
+      {error && (
+        <div className="mt-4 p-3 rounded bg-red-50 border border-red-300 text-red-700">
+          {error}
+        </div>
+      )}
 
+      <button
+        className="bg-green-600 text-white px-4 py-2 mt-5 rounded disabled:opacity-50"
+        onClick={submit}
+        disabled={!ownerId || loading}
+      >
+        {loading ? "Creating..." : "Create Group"}
+      </button>
 
-}catch(error){
+      <button
+        className="border px-4 py-2 mt-3 ml-3 rounded"
+        onClick={() => router.back()}
+      >
+        Cancel
+      </button>
 
-  console.log("CREATE GROUP ERROR:", error);
-  console.log("STATUS:", error.response?.status);
-  console.log("BACKEND RESPONSE:", error.response?.data);
-
-  alert(
-    JSON.stringify(
-      error.response?.data || "Failed",
-      null,
-      2
-    )
+    </main>
   );
-
-}
-
-}
-
-
-
-return (
-
-<div className="max-w-md mx-auto mt-10">
-
-
-<h1 className="text-2xl font-bold">
-Create Group
-</h1>
-
-
-<input
-className="border p-2 w-full mt-5"
-name="name"
-placeholder="Group name"
-onChange={change}
-/>
-
-
-<input
-className="border p-2 w-full mt-3"
-name="description"
-placeholder="Description"
-onChange={change}
-/>
-
-
-
-<button
-className="bg-green-600 text-white px-4 py-2 mt-5 rounded"
-onClick={submit}
->
-Create Group
-</button>
-
-
-</div>
-
-)
-
 }

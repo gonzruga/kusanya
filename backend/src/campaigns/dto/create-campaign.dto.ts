@@ -17,8 +17,8 @@ export class CreateCampaignDto {
   title: string;
 
 
-  @IsOptional()
   @IsString()
+  @IsNotEmpty()
   description: string;
 
 
@@ -35,6 +35,10 @@ export class CreateCampaignDto {
   @IsNumber()
   goal?: number;
 
+  @IsOptional()
+  @IsString()
+  @IsNotEmpty()
+  code?: string;
 
   // @IsString()
   // @IsNotEmpty()
@@ -43,11 +47,15 @@ export class CreateCampaignDto {
 
   @IsNotEmpty()
   @IsDateString()
-  startDate: Date;
+  startDate: string;
+  // startDate: Date;
+
 
 
   @IsNotEmpty()
   @IsDateString()
-  endDate: Date;
+  endDate: string;
+    // endDate: Date;
+
 
 }

@@ -99,7 +99,7 @@ export default function CreateContributionPage() {
       <input
         className="border p-2 w-full mt-5"
         name="mobileNumber"
-        placeholder="Mobile Number"
+        placeholder="Mobile Number (e.g. +2557XXXXXXXX)"
         value={form.mobileNumber}
         onChange={change}
       />
@@ -138,7 +138,7 @@ export default function CreateContributionPage() {
       <input
         className="border p-2 w-full mt-3"
         name="providerReference"
-        placeholder="Provider Reference (*Optional pending API*)" //Temporarily optional pending API
+        placeholder="Provider Reference (*Optional. Pending API*)" //Temporarily optional pending API
         value={form.providerReference}
         onChange={change}
       />

@@ -31,4 +31,9 @@ export class GroupsController {
   remove(@Param('id') id: string) {
     return this.groupsService.remove(id);
   }
+
+  @Get(':groupId/member-data')
+  async getMemberData(@Param('groupId') groupId: string) {
+    return this.groupsService.getMemberData(groupId);
+  }
 }

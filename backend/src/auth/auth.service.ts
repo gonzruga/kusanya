@@ -39,11 +39,9 @@ export class AuthService {
         role: Role.USER,
       });
 
-  const { password, ...result } = user;
-
   return {
     message: 'Registration successful',
-    user: result,
+    user,
   };
 
   }
